@@ -1,34 +1,29 @@
-#!usr/bin/python
+#!usr/bin/python3
 # Berekening gezeilde tijd met omrekening met behulp van de SW waarde
 # Inputs:
-# Gezeilde tijd in hh:mm:ss
+# Gezeilde uren, minuten en seconden in hh:mm:ss
 # SW in float
-# Output: Berekende tijd
-# BerekendeTijd == GezeildeTijd * 100 / SW
+# Output: Berekende tijd als string
+# BerekendeTijd = GezeildeTijd * 100 / SW
 # print(BerekendeTijd("01:32:56",103.5))
 
 import datetime
 
-def BerekendeSec(GezeildeTijd, SW):
-    TinSec = get_sec(GezeildeTijd) * 100 / SW
-    return TinSec
 
-def TimeFromSec(TinSec):
-    return datetime.timedelta(seconds = TinSec)
+# noinspection PyShadowingNames
+def berekendetijd(gezeildeuren, gezeildeminuten, gezeildeseconden, sw):
+    tinsec = get_sec(gezeildeuren, gezeildeminuten, gezeildeseconden) * 100 / sw
+    return datetime.timedelta(seconds=tinsec)
 
-def get_sec(t):
-    l = t.split(':')
-    return int(l[0]) * 3600 + int(l[1]) * 60 + int(l[2])
 
-#main()
-#GezeildeTijd = input("Geef gezeilde tijd: ")
-#SW = input("Geef SW: ")
+def get_sec(u, m, s):
+    return u * 3600 + m * 60 + s
 
-GezeildeTijd = "1:00:00"
-SW = 110
 
-s = BerekendeSec(GezeildeTijd, SW)
-t = TimeFromSec(s)
+# main()
+igezeildeuren = int(input("Geef gezeilde uren: "))
+igezeildeminuten = int(input("Geef gezeilde minuten: "))
+igezeildeseconden = int(input("Geef gezeilde seconden: "))
+sw = int(input("Geef SW: "))
 
-print("Berekende tijd: " + str(t))
-print("Berekende tijd in seconden: " + str(s))
+print("Berekende tijd: " + str(berekendetijd(igezeildeuren, igezeildeminuten, igezeildeseconden, sw)))
