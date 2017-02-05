@@ -32,7 +32,6 @@ def button_tapped(sender: object):
     if swLock.value:
       hud_alert('Stop button is locked. Unlock to use stop.')
       else:
-        tStoptijd = time()
         tStopTijd = time()
         tTimer = strftime("%H:%M:%S", gmtime(tStoptijd - tStartTijd))
         sender.title = "Start"
