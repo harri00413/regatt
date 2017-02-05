@@ -11,7 +11,11 @@ tStopTijd = 0.0
 tTimer = 0.0
 bRunning = False
 
-def button_tapped(sender):
+def button_tapped(sender: object):
+  """
+
+  :type sender: object
+  """
   global bRunning
   global tTimer
   global tStartTijd
@@ -29,6 +33,7 @@ def button_tapped(sender):
       hud_alert('Stop button is locked. Unlock to use stop.')
       else:
         tStoptijd = time()
+        tStopTijd = time()
         tTimer = strftime("%H:%M:%S", gmtime(tStoptijd - tStartTijd))
         sender.title = "Start"
         btnStartStop.tint_color = 0.00, 1.00, 0.00
